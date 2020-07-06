@@ -40,7 +40,7 @@ class CompanyController extends Controller
         $this->result->success();
         $this->result->addMessage('PAGINATED_LIST','Paginated model list');
         $this->result->setDescription('List of companies registred in nuestroscatalogos.com');
-        $this->result->addDatum('companies_paginated',PaginatedResource::make($data->paginate(15),'companies'));
+        $this->result->addDatum('companies_paginated', PaginatedResource::make($data->paginate(15), 'companies'));
 
         return $this->result->getJsonResponse();
     }
@@ -87,9 +87,15 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $company_id)
     {
-        //
+        $company = $this->service->updateCompanyData($request, $company_id);
+
+        $this->result->success();
+        $this->result->addMessage('UPDATED','Model updated in the service');
+        $this->result->setDescription('Company data updated succesfuly in nuestroscatalogos.com');
+        $this->result->addDatum('company', CompanyResource::make($company));
+        return $this->result->getJsonResponse();
     }
 
     /**
@@ -107,4 +113,31 @@ class CompanyController extends Controller
 
         return $this->result->getJsonResponse();
     }
+    /**
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function storeComanyImage(Request $request){
+
+    }
+
+    /**
+     * @param Request $request
+     * @param integer $image_id
+     * @return void
+     */
+    public function updateComanyImage(Request $request, int $company_id){
+        
+    }
+    /**
+     * @param Request $request
+     * @param int $image_id
+     * @return void
+     */
+    public function destroyComanyImage(Request $request, int $company_id){
+
+    }
+
+
 }

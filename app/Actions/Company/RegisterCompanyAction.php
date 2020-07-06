@@ -10,6 +10,7 @@ class RegisterCompanyAction{
 
         $company = Company::create([
             'name' => $data['name'],
+            'description' => $data['description'],
         ]);
 
         return $company;

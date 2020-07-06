@@ -14,11 +14,7 @@ class AttachImagesModelAction{
      * @param int $model_id
      * @return void
      */
-    public static function execute($data, $folder, $model, $model_id):void{
-
-        $array_name=explode("\\",$model);
-        $model_name = strtolower(end($array_name));
-        $entity = $model::find($model_id);
+    public static function execute($data, $folder, $model_name, $entity):void{
 
         if (array_key_exists('image',$data)){
             self::createImage($data['image'], $entity, $folder, $model_name);
@@ -33,6 +29,7 @@ class AttachImagesModelAction{
     }
 
     private static function createImage($image, $entity, $folder, $model_name):void{
+        
         $url = StoreImageAction::execute($image, $folder, $model_name);
         $image = Image::create([
             'url' => $url,

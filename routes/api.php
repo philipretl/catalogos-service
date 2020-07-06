@@ -40,6 +40,7 @@ $router->group(['prefix' => 'api/v1'], function () use ($router){
         $router->get('/list', 'Api\Admin\CompanyController@index');
         $router->get('/find/{company_id}', 'Api\Admin\CompanyController@show');
         $router->post('/register', 'Api\Admin\CompanyController@store');
+        $router->put('/update/{company_id}', 'Api\Admin\CompanyController@update');
         $router->delete('/delete/{company_id}', 'Api\Admin\CompanyController@destroy');
 
     });

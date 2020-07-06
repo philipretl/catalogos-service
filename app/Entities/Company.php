@@ -13,7 +13,8 @@ class Company extends Model
 
     protected $table = 'companies';
     protected $fillable = [
-        'name'
+        'name',
+        'description'
     ];
 
     public function images(){
