@@ -9,7 +9,7 @@ use App\Entities\Company;
 
 class UpdateCompanyValidator {
 
-    public static function execute($data, $company_id):Company{
+    public static function execute($data, $company_id):void{
 
         $company = Company::find($company_id);
         if ($company == null){
@@ -27,6 +27,6 @@ class UpdateCompanyValidator {
             $exception->addFieldErrors($validator->errors());
             throw $exception;
         }
-        return $company;
+        return;
     }
 }

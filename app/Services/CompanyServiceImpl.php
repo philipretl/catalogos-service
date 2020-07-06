@@ -6,12 +6,12 @@ use Illuminate\Http\Request;
 use App\Services\Contracts\CompanyService;
 use DB;
 
-
 use App\Validators\ImageValidator;
 use App\Validators\Company\RegisterCompanyValidator;
 use App\Validators\Company\UpdateCompanyValidator;
 
 use App\Actions\Company\RegisterCompanyAction;
+use App\Actions\Company\UpdateCompanyAction;
 use App\Actions\Company\ListCompanyAction;
 use App\Actions\Company\FindCompanyAction;
 use App\Actions\Shared\AttachimagesModelAction;
@@ -23,8 +23,8 @@ class CompanyServiceImpl implements CompanyService{
 
     public function registerCompany($request):Company{
 
-        $data = $request->only(['name', 'images', 'image', 'description']);
         $company=null;
+        $data = $request->only(['name', 'images', 'image', 'description']);
 
         RegisterCompanyValidator::execute($data);
         ImageValidator::execute($data);
@@ -45,10 +45,14 @@ class CompanyServiceImpl implements CompanyService{
     }
 
     public function updateCompanyData(Request $request, $company_id):Company{
+
+        $company = null;
         $data = $request->only(['name', 'description']);
-        $company = UpdateCompanyValidator::execute($data, $company_id);
-        $company->fill($data);
-        $company->save();
+
+        UpdateCompanyValidator::execute($data, $company_id);
+        DB::transaction(function() use ($data, &$company, $company_id){
+            $company = UpdateCompanyAction::execute($data, $company_id);
+        });
         return $company;
     }
 
@@ -61,12 +65,15 @@ class CompanyServiceImpl implements CompanyService{
         DeleteAction::execute(Company::class, $company_id, false);
         return;
     }
+
     public function StoreCompanyImage(Request $request):void{
 
     }
+
     public function UpdateCompanyImage(Request $request, int $company_id):void{
 
     }
+
     public function DeleteCompanyImage(Request $request, int $company_id):void{
 
     }
