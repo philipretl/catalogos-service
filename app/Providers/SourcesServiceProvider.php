@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Services\AuthServiceImpl;
 use App\Services\Contracts\AuthService;
+use App\Services\Contracts\CompanyService;
+use App\Services\CompanyServiceImpl;
 
 class SourcesServiceProvider extends ServiceProvider
 {
@@ -15,7 +17,8 @@ class SourcesServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->bind(AuthService::class,AuthServiceImpl::class);
+        $this->app->bind(AuthService::class, AuthServiceImpl::class);
+        $this->app->bind(CompanyService::class, CompanyServiceImpl::class);
     }
 
     /**

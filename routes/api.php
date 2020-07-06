@@ -16,7 +16,9 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
-
+/**
+ * Auth Routes
+ */
 $router->group(['prefix' => 'api/v1'], function () use ($router){
 
     $router->group(['prefix' => 'auth'], function () use ($router){
@@ -25,6 +27,18 @@ $router->group(['prefix' => 'api/v1'], function () use ($router){
 
     $router->group(['prefix' => 'auth'], function () use ($router){
         $router->post('/logout', ['middleware' => ['auth'], 'uses' => 'Api\AuthController@logout']);
+    });
+
+});
+
+/**
+ * Company Admin Routes
+ */
+$router->group(['prefix' => 'api/v1'], function () use ($router){
+
+    $router->group(['prefix' => 'admin/company'], function () use ($router){
+        $router->get('/list', 'Api\CompanyController@index');
+        $router->post('/register', 'Api\CompanyController@store');
     });
 
 });

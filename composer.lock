@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa54d7a7b85f0dde34e5d371c358f734",
+    "content-hash": "85e1fcdf370ae2e12237b13f14222793",
     "packages": [
         {
             "name": "askedio/laravel-soft-cascade",
@@ -5542,11 +5542,11 @@
         },
         {
             "name": "venoudev/results",
-            "version": "dev-feature/lumen_support",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "../results",
-                "reference": "888d52728edbf9a18525aaf81dc2167a360a2e3a",
+                "reference": "49ea0c01968410bc6e1682a70fec253a954d4572",
                 "shasum": null
             },
             "require": {
@@ -7335,7 +7335,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.2.5"
+        "php": "^7.4"
     },
     "platform-dev": []
 }

@@ -2,19 +2,17 @@
 
 namespace App\Validators;
 
-use Venoudev\Results\Contracts\Result;
 use Illuminate\Support\Facades\Validator;
 use Venoudev\Results\Exceptions\CheckDataException;
 
-class LoginValidator
-{
+class ImageValidator{
 
     public static function execute($data):void{
 
-        $validator=Validator::make($data,[
-          'email'=> ['required', 'string', 'max:100','email'],
-          'password'=> ['required', 'string',],
-
+        $validator = Validator::make($data, [
+            'image' => ['required_without_all:images','file', 'image'],
+            'images'=> ['required_without_all:image', 'array'],
+            'images.*' => ['bail', 'required_with_all:images', 'file', 'image'],
         ]);
 
         if ($validator->fails()) {
@@ -23,5 +21,7 @@ class LoginValidator
             throw $exception;
         }
         return;
+
     }
+
 }
