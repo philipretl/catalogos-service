@@ -37,10 +37,10 @@ $router->group(['prefix' => 'api/v1'], function () use ($router){
 $router->group(['prefix' => 'api/v1'], function () use ($router){
 
     $router->group(['prefix' => 'admin/company'], function () use ($router){
-        $router->get('/list', 'Api\CompanyController@index');
-        $router->get('/find/{company_id}', 'Api\CompanyController@show');
-        $router->post('/register', 'Api\CompanyController@store');
-        $router->delete('/delete/{company_id}', 'Api\CompanyController@destroy');
+        $router->get('/list', 'Api\Admin\CompanyController@index');
+        $router->get('/find/{company_id}', 'Api\Admin\CompanyController@show');
+        $router->post('/register', 'Api\Admin\CompanyController@store');
+        $router->delete('/delete/{company_id}', 'Api\Admin\CompanyController@destroy');
 
     });
 
