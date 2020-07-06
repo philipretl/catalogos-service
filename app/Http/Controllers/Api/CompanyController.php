@@ -28,6 +28,14 @@ class CompanyController extends Controller
     public function index()
     {
         $companies = $this->service->listCompany();
+
+        if($companies->isEmpty()){
+            $this->result->success();
+            $this->result->addMessage('EMPTY_LIST','Empty model list solicited');
+            $this->result->setDescription('List empty of companies registred in nuestroscatalogos.com');
+            return $this->result->getJsonResponse();
+        }
+
         $data = CompanyResource::collection($companies);
         $this->result->success();
         $this->result->addMessage('PAGINATED_LIST','Paginated model list');
@@ -61,9 +69,15 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($company_id)
     {
-        //
+        $company = $this->service->findCompany($company_id);
+
+        $this->result->success();
+        $this->result->addMessage('FOUND','Model found in the service');
+        $this->result->setDescription('Company found succesfuly in nuestroscatalogos.com');
+        $this->result->addDatum('company', CompanyResource::make($company));
+        return $this->result->getJsonResponse();
     }
 
     /**
@@ -84,8 +98,13 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $company_id)
     {
-        //
+        $this->service->deleteCompany($request, $company_id);
+        $this->result->success();
+        $this->result->addMessage('DELETED','Model deleted in the service');
+        $this->result->setDescription('Company deleted succesfuly in nuestroscatalogos.com');
+
+        return $this->result->getJsonResponse();
     }
 }

@@ -3,11 +3,14 @@
 namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Entities\Company;
 use App\Entities\File;
 
 class Catalog extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'catalogs';
     protected $fillable = [
         'campaing',

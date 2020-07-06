@@ -3,14 +3,16 @@
 namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Entities\Image;
 use App\Entities\Catalog;
 
 class Company extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'companies';
     protected $fillable = [
-        'campaing',
         'name'
     ];
 
