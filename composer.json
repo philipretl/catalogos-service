@@ -12,6 +12,7 @@
         "laravel/lumen-framework": "^7.0",
         "laravelista/lumen-vendor-publish": "^7.0",
         "spatie/laravel-permission": "^3.13",
+        "swooletw/laravel-swoole": "^2.6",
         "venoudev/results": "*@dev"
     },
     "require-dev": {

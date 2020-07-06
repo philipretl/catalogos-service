@@ -183,4 +183,10 @@ $app->singleton(
 $app->register(Illuminate\Filesystem\FilesystemServiceProvider::class);
 $app->configure('filesystems');
 
+/**
+ * Swoole
+ */
+
+ $app->register(SwooleTW\Http\LumenServiceProvider::class);
+
 return $app;
