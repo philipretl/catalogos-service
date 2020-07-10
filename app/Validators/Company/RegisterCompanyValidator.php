@@ -1,20 +1,17 @@
 <?php
 
-namespace App\Validators;
+namespace App\Validators\Company;
 
 use Venoudev\Results\Contracts\Result;
 use Illuminate\Support\Facades\Validator;
 use Venoudev\Results\Exceptions\CheckDataException;
 
-class LoginValidator
-{
+class RegisterCompanyValidator {
 
-    public static function execute($data):void{
-
+    public static function execute($data){
         $validator=Validator::make($data,[
-          'email'=> ['required', 'string', 'max:100','email'],
-          'password'=> ['required', 'string',],
-
+          'name'=> ['required', 'string', 'max:100'],
+          'description' => ['required', 'string'],
         ]);
 
         if ($validator->fails()) {

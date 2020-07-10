@@ -16,20 +16,33 @@ class InitProyectSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'admin',
-            'email' => 'admin@venoudev.com',
+            'email' => 'admin@nuestroscatalogos.com',
+            'password' => Hash::make('12345678'),
+
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Sandra Noguera',
+            'email' => 'sandra@nuestroscatalogos.com',
             'password' => Hash::make('12345678'),
 
         ]);
 
         $roles = [
             'admin',
+            'seller',
+            'user',
+            'zone_leader'
         ];
 
         foreach ($roles as $rol) {
             Role::create(['guard_name' => 'api', 'name' => $rol]);
         }
 
-        $user = User::where('email', 'admin@venoudev.com')->first();
+        $user = User::where('email', 'admin@nuestroscatalogos.com')->first();
         $user->assignRole('admin');
+
+        $user = User::where('email', 'sandra@nuestroscatalogos.com')->first();
+        $user->assignRole('seller');
     }
 }

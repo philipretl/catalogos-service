@@ -5,13 +5,14 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "^7.2.5",
+        "php": "^7.4",
         "askedio/laravel-soft-cascade": "^7.0",
         "dusterio/lumen-passport": "^0.2.19",
         "flipbox/lumen-generator": "^7.0",
         "laravel/lumen-framework": "^7.0",
         "laravelista/lumen-vendor-publish": "^7.0",
         "spatie/laravel-permission": "^3.13",
+        "swooletw/laravel-swoole": "^2.6",
         "venoudev/results": "*@dev"
     },
     "require-dev": {
