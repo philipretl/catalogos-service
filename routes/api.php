@@ -45,4 +45,14 @@ $router->group(['prefix' => 'api/v1'], function () use ($router){
 
     });
 
+    $router->group(['prefix' => 'admin/catalog'], function () use ($router){
+        $router->get('/list', 'Api\Admin\CatalogController@index');
+        $router->get('/list_by_company/{company_id}', 'Api\Admin\CatalogController@indexByCompany');
+        $router->get('/find/{catalog_id}', 'Api\Admin\CatalogController@show');
+        $router->post('/register', 'Api\Admin\CatalogController@store');
+        $router->put('/update/{catalog_id}', 'Api\Admin\CatalogController@update');
+        $router->delete('/delete/{catalog_id}', 'Api\Admin\CatalogController@destroy');
+
+    });
+
 });

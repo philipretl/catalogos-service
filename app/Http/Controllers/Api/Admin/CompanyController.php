@@ -36,6 +36,7 @@ class CompanyController extends Controller
             return $this->result->getJsonResponse();
         }
 
+
         $data = CompanyResource::collection($companies);
         $this->result->success();
         $this->result->addMessage('PAGINATED_LIST','Paginated model list');
