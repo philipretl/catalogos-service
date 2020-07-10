@@ -14,6 +14,7 @@ use Venoudev\Results\Exceptions\CheckDataException;
 use Venoudev\Results\Exceptions\NotFoundException;
 use Venoudev\Results\Exceptions\UnauthorizedPassportException;
 use Illuminate\Auth\AuthenticationException;
+use Spatie\Permission\Exceptions\UnauthorizedException as UnauthorizedRolException;
 
 use Throwable;
 use ResultManager;
@@ -59,7 +60,7 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
 
-        if ($exception instanceof UnauthorizedException) {
+        if ($exception instanceof UnauthorizedRolException) {
 
             $result= ResultManager::createResult();
             $result->fail();
