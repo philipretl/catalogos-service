@@ -56,7 +56,7 @@ class CompanyServiceImpl implements CompanyService{
         return $company;
     }
 
-    public function DeleteCompany(Request $request, int $company_id):void{
+    public function deleteCompany(Request $request, int $company_id):void{
 
         if($request->hard_delete == 'true'){
             DeleteAction::execute(Company::class, $company_id, true);
@@ -66,15 +66,15 @@ class CompanyServiceImpl implements CompanyService{
         return;
     }
 
-    public function StoreCompanyImage(Request $request):void{
+    public function storeCompanyImage(Request $request):void{
 
     }
 
-    public function UpdateCompanyImage(Request $request, int $company_id):void{
+    public function updateCompanyImage(Request $request, int $company_id):void{
 
     }
 
-    public function DeleteCompanyImage(Request $request, int $company_id):void{
+    public function deleteCompanyImage(Request $request, int $company_id):void{
 
     }
 }
