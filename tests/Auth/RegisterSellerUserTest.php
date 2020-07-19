@@ -359,7 +359,6 @@ class RegisterSellerUserTest extends TestCase
 
             'success'=> true,
             'description' => 'Seller registered succesfuly in nuestroscatalogos.com.',
-
             'phone'=>  strval($user->phone),
             'email'=>  $user->email,
             'roles'=>  [
