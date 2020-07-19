@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Venoudev\Results\Contracts\Result;
 use Venoudev\Results\ApiJsonResources\PaginatedResource;
 use App\Services\Contracts\CompanyService;
-use App\Http\Resources\Admin\CompanyResource;
+use App\Http\Resources\Admin\CompanyAdminResource;
 
 class CompanyController extends Controller
 {
@@ -37,7 +37,7 @@ class CompanyController extends Controller
         }
 
 
-        $data = CompanyResource::collection($companies);
+        $data = CompanyAdminResource::collection($companies);
         $this->result->success();
         $this->result->addMessage('PAGINATED_LIST','Paginated model list');
         $this->result->setDescription('List of companies registred in nuestroscatalogos.com');
@@ -60,7 +60,7 @@ class CompanyController extends Controller
         $this->result->success();
         $this->result->addMessage('REGISTERED','Model registered in the service');
         $this->result->setDescription('Company registred succesfuly in nuestroscatalogos.com');
-        $this->result->addDatum('company', CompanyResource::make($company));
+        $this->result->addDatum('company', CompanyAdminResource::make($company));
         return $this->result->getJsonResponse();
     }
 
@@ -77,7 +77,7 @@ class CompanyController extends Controller
         $this->result->success();
         $this->result->addMessage('FOUND','Model found in the service');
         $this->result->setDescription('Company found succesfuly in nuestroscatalogos.com');
-        $this->result->addDatum('company', CompanyResource::make($company));
+        $this->result->addDatum('company', CompanyAdminResource::make($company));
         return $this->result->getJsonResponse();
     }
 
@@ -95,7 +95,7 @@ class CompanyController extends Controller
         $this->result->success();
         $this->result->addMessage('UPDATED','Model updated in the service');
         $this->result->setDescription('Company data updated succesfuly in nuestroscatalogos.com');
-        $this->result->addDatum('company', CompanyResource::make($company));
+        $this->result->addDatum('company', CompanyAdminResource::make($company));
         return $this->result->getJsonResponse();
     }
 
@@ -114,31 +114,5 @@ class CompanyController extends Controller
 
         return $this->result->getJsonResponse();
     }
-    /**
-     *
-     * @param Request $request
-     * @return void
-     */
-    public function storeComanyImage(Request $request){
-
-    }
-
-    /**
-     * @param Request $request
-     * @param integer $image_id
-     * @return void
-     */
-    public function updateComanyImage(Request $request, int $company_id){
-        
-    }
-    /**
-     * @param Request $request
-     * @param int $image_id
-     * @return void
-     */
-    public function destroyComanyImage(Request $request, int $company_id){
-
-    }
-
 
 }

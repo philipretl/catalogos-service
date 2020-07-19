@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Validators;
+namespace App\Validators\Auth;
 
 use Venoudev\Results\Contracts\Result;
 use Illuminate\Support\Facades\Validator;
@@ -12,8 +12,9 @@ class LoginValidator
     public static function execute($data):void{
 
         $validator=Validator::make($data,[
-          'email'=> ['required', 'string', 'max:100','email'],
-          'password'=> ['required', 'string',],
+            'email' => ['bail', 'required_without_all:phone', 'string', 'email'],
+            'phone'=> ['bail', 'required_without_all:email', 'string'],
+            'password' => ['bail', 'required', 'min:8'],
 
         ]);
 

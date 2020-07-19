@@ -29,6 +29,9 @@ $router->group(['prefix' => 'api/v1'], function () use ($router){
         $router->post('/logout', ['middleware' => ['auth'], 'uses' => 'Api\AuthController@logout']);
     });
 
+    $router->group(['prefix' => 'auth'], function () use ($router){
+        $router->post('/seller/register', 'Api\Seller\RegisterSellerController@store');
+    });
 });
 
 /**
@@ -36,7 +39,7 @@ $router->group(['prefix' => 'api/v1'], function () use ($router){
  */
 $router->group(['prefix' => 'api/v1'], function () use ($router){
 
-    $router->group(['prefix' => 'admin/company'], function () use ($router){
+    $router->group(['middleware' => ['auth' , 'role_or_permission:admin|admin-permission'], 'prefix' => 'admin/company'], function () use ($router){
         $router->get('/list', 'Api\Admin\CompanyController@index');
         $router->get('/find/{company_id}', 'Api\Admin\CompanyController@show');
         $router->post('/register', 'Api\Admin\CompanyController@store');

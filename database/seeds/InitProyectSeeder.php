@@ -17,6 +17,7 @@ class InitProyectSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'admin',
             'email' => 'admin@nuestroscatalogos.com',
+            'phone' => '3012017499',
             'password' => Hash::make('12345678'),
 
         ]);
@@ -24,6 +25,7 @@ class InitProyectSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Sandra Noguera',
             'email' => 'sandra@nuestroscatalogos.com',
+            'phone' => '3122081524',
             'password' => Hash::make('12345678'),
 
         ]);

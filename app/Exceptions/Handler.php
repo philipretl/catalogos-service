@@ -65,8 +65,9 @@ class Handler extends ExceptionHandler
             $result= ResultManager::createResult();
             $result->fail();
             $result->setCode(401);
-            $result->addError('UNAUTHORIZED','You don\'t have permission for this action');
-            $result->setDescription('this is posible because that your rol is incorrectly');
+            $result->addMessage('UNAUTHORIZED','You don\'t have rol or permission for this action');
+            $result->addError('ROL_PERMISSION','Rol or permission incorrectly');
+            $result->setDescription('Exist conflict with your rol or permission, please check the errors or messages.');
             return $result->getJsonResponse();
 
         }
@@ -75,7 +76,7 @@ class Handler extends ExceptionHandler
             $result->fail();
             $result->setCode(404);
             $result->addError('ROUTE_NOT_FOUND','Invalid route');
-            $result->setDescription('this is posible because that your route is incorrectly');
+            $result->setDescription('This is posible because your route is incorrectly');
             return $result->getJsonResponse();
         }
 
@@ -105,7 +106,6 @@ class Handler extends ExceptionHandler
             $exception_internal = new UnauthorizedPassportException();
             return $exception_internal->getJsonResponse();
         }
-
         return parent::render($request, $exception);
     }
 }

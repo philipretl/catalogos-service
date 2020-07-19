@@ -23,8 +23,8 @@ class AuthController extends Controller
 
         $user = $this->authenticationService->login($request);
         $this->result->success();
-        $this->result->addMessage('AUTHENTIFIED','User authentified correctly');
-        $this->result->setDescription('Welcome Be Awesome!');
+        $this->result->addMessage('AUTHENTIFIED','User authentified correctly.');
+        $this->result->setDescription('Welcome Be Awesome!.');
         $this->result->addDatum('user',UserLoginResource::make($user));
 
         return $this->result->getJsonResponse();
@@ -35,8 +35,8 @@ class AuthController extends Controller
 
         $this->authenticationService->logout();
         $this->result->success();
-        $this->result->addMessage('LOGOUT','Successfully logged out');
-        $this->result->setDescription('See you soon, be Awesome!');
+        $this->result->addMessage('LOGOUT','Successfully logged out.');
+        $this->result->setDescription('See you soon, be Awesome!.');
 
         return $this->result->getJsonResponse();
     }

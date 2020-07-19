@@ -7,6 +7,8 @@ use App\Services\AuthServiceImpl;
 use App\Services\Contracts\AuthService;
 use App\Services\Contracts\CompanyService;
 use App\Services\CompanyServiceImpl;
+use App\Services\Contracts\UserSellerService;
+use App\Services\UserSellerServiceImpl;
 
 class SourcesServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,7 @@ class SourcesServiceProvider extends ServiceProvider
     {
         $this->app->bind(AuthService::class, AuthServiceImpl::class);
         $this->app->bind(CompanyService::class, CompanyServiceImpl::class);
+        $this->app->bind(UserSellerService::class, UserSellerServiceImpl::class);
     }
 
     /**
